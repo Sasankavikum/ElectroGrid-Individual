@@ -44,7 +44,7 @@ public class bill {
 		 
 			//check current reading is greater than pre reading.
 			if(preReading>currentReading) {
-				output = "Error while inserting the item.";	 
+				output = "Error while inserting the bill.";	 
 			}
 			else {
 			 
@@ -57,7 +57,7 @@ public class bill {
 			 
 				if (con == null)
 				{
-					return "Error while connecting to the database for inserting."; 
+					output = "{\"status\":\"error\", \"data\": \"Error while inserting the bill.\"}";
 				}
 				
 				// create a prepared statement
@@ -92,7 +92,7 @@ public class bill {
 		 	catch (Exception e)
 		 	{
 		 
-		 		output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
+		 		output = "{\"status\":\"error\", \"data\": \"Error while inserting the bill.\"}";
 		 		System.err.println(e.getMessage());
 		 	}
 		 	return output;
@@ -111,7 +111,7 @@ public class bill {
 			}
 			
 			// Prepare the html table to be displayed
-			output = "<table border='1'><tr><th>Bill ID</th>"
+			output = "<table border='1'><tr>"
 						+"<th>Name</th>"
 						+ "<th>Date</th>"
 						+"<th>Account Number</th>"
@@ -141,8 +141,7 @@ public class bill {
 				String total = Double.toString(rs.getDouble("total"));
 		 
 				// Add into the html table
-				output += "<tr><td>" + billID + "</td>";
-				output += "<td>" + bname + "</td>";
+				output += "<tr><td><input id=\'hidbillIDUpdate\' name=\'hidbillIDUpdate\' type=\'hidden\' value=\'" + billID + "'>'" + bname + "</td>";
 				output += "<td>" + bdate + "</td>";
 				output += "<td>" + accno + "</td>";
 				output += "<td>" + prereading + "</td>";
@@ -182,7 +181,7 @@ public class bill {
 			
 			//check current reading is greater than pre-reading
 			if(preReading>currentReading) {
-				output = "Error while updating the item.";	 
+				output = "Error while updating the bill.";	 
 			}
 			else {
 				 
@@ -224,7 +223,7 @@ public class bill {
 			}
 			catch (Exception e)
 			{
-				output = "{\"status\":\"error\", \"data\": \"Error while updating the item.\"}";
+				output = "{\"status\":\"error\", \"data\": \"Error while updating the Bill.\"}";
 				System.err.println(e.getMessage());
 			}
 			return output;

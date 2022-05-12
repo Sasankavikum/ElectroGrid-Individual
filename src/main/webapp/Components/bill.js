@@ -42,7 +42,8 @@ $(document).on("click", "#btnSave", function(event)
 // update	
 $(document).on("click", ".btnUpdate", function(event)
 {
-	$("#hidbillIDSave").val($(this).data("billID"));
+	$("#hidbillIDSave").val(
+					$(this).closest("tr").find('#hidbillIDUpdate').val());
  	$("#bname").val($(this).closest("tr").find('td:eq(0)').text());
 	$("#bdate").val($(this).closest("tr").find('td:eq(1)').text());
  	$("#accno").val($(this).closest("tr").find('td:eq(2)').text());
@@ -164,5 +165,6 @@ function validateItemForm()
 	{
  		return "Insert Current Reading Value.";
  	}
+
 	return true;
 }
