@@ -42,9 +42,7 @@ $(document).on("click", "#btnSave", function(event)
 // update	
 $(document).on("click", ".btnUpdate", function(event)
 {
-
-				$("#hidbillIDSave").val(
-					$(this).closest("tr").find('#hidbillIDUpdate').val());
+	$("#hidbillIDSave").val($(this).data("billID"));
  	$("#bname").val($(this).closest("tr").find('td:eq(0)').text());
 	$("#bdate").val($(this).closest("tr").find('td:eq(1)').text());
  	$("#accno").val($(this).closest("tr").find('td:eq(2)').text());
@@ -58,7 +56,7 @@ $(document).on("click", ".btnRemove", function(event)
  	{
  		url : "billAPI",
  		type : "DELETE",
- 		data : "billID=" + $(this).data("billID"),
+ 		data : "billID=" + $(this).data("billid"),
  		dataType : "text",
  		complete : function(response, status)
  		{
