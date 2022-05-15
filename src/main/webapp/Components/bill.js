@@ -67,17 +67,6 @@ $(document).on("click", ".btnRemove", function(event)
 });
 
 
-// REMOVE==========================================
-$(document).on("click", ".remove", function(event)
-{
- 	$(this).closest(".bill").remove();
-
- 	$("#alertSuccess").text("Removed successfully.");
- 	$("#alertSuccess").show();
-});
-
-
-
 function onItemSaveComplete(response, status)
 	{
 	if (status == "success")
